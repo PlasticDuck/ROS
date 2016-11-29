@@ -118,6 +118,7 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  include/PathPlanner
 )
 
 ## Declare a C++ library
@@ -125,22 +126,33 @@ include_directories(
 #   src/${PROJECT_NAME}/PathPlanner.cpp
 # )
 
+set(MY_LIB_SOURCE
+  src/PathPlanner/OccupancyGridSaver.cpp
+  src/PathPlanner/TransformatorOOG.cpp
+  src/PathPlanner/DStarPlanner.cpp
+  src/PathPlanner/SearchMap.cpp
+)
+
+add_library(my_libraries ${MY_LIB_SOURCE})
+
+
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
 # add_dependencies(PathPlanner ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(PathPlanner_node src/PathPlanner_node.cpp)
+add_executable(PathPlanner_node src/test1.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(PathPlanner_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(PathPlanner_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(PathPlanner_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(PathPlanner_node
+   ${catkin_LIBRARIES}
+   my_libraries
+)
 
 #############
 ## Install ##
