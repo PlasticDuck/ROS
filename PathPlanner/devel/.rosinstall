@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/nandi/catkin_ws/src/RosProject/PathPlanner/devel/setup.sh

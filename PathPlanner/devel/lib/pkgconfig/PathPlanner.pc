@@ -1,0 +1,8 @@
+prefix=/home/nandi/catkin_ws/src/RosProject/PathPlanner/devel
+
+Name: PathPlanner
+Description: Description of PathPlanner
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/nandi/catkin_ws/src/RosProject/PathPlanner/devel/lib 
+Requires: 
